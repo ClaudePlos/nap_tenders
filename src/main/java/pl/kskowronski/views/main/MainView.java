@@ -18,10 +18,7 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import pl.kskowronski.views.main.MainView;
-import pl.kskowronski.views.przetargi.PrzetargiView;
+import pl.kskowronski.views.tenders.TendersView;
 import pl.kskowronski.views.about.AboutView;
 
 /**
@@ -82,7 +79,7 @@ public class MainView extends AppLayout {
 
     private Component[] createMenuItems() {
         return new Tab[] {
-            createTab("Przetargi", PrzetargiView.class),
+            createTab("Przetargi", TendersView.class),
             createTab("About", AboutView.class)
         };
     }
