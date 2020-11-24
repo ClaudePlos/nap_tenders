@@ -16,6 +16,8 @@ public class Tender {
     public static String AKTYWNOSC_BRAK_UDZIALU = "BRAK_UDZIALU";
     public static String AKTYWNOSC_W_DECYZJI = "W_DECYZJI";
 
+    public static String TERMIN_ZLOZENIE_OFERT = "ZLOZENIE_OFERT";
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -53,7 +55,7 @@ public class Tender {
     @Column(name = "dlugosc_umowy")
     private Long dlugoscUmowy;
 
-    @Column(name = "terminPlatnosciDni")
+    @Column(name = "TERMINPLATNOSCIDNI")
     private Long terminPlatnosciDni;
 
     @Column(name="wynik_oceny")
@@ -64,6 +66,9 @@ public class Tender {
 
     @Column(name="responsible_person_formal")
     private String responsiblePersonFormal;
+
+    @Column(name="FARCHIWALNY",nullable=false)
+    private String fArchiwalny = "N";
 
     public BigDecimal getId() {
         return id;
@@ -183,5 +188,13 @@ public class Tender {
 
     public void setResponsiblePersonFormal(String responsiblePersonFormal) {
         this.responsiblePersonFormal = responsiblePersonFormal;
+    }
+
+    public String getfArchiwalny() {
+        return fArchiwalny;
+    }
+
+    public void setfArchiwalny(String fArchiwalny) {
+        this.fArchiwalny = fArchiwalny;
     }
 }

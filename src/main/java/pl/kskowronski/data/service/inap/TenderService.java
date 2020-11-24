@@ -1,11 +1,21 @@
 package pl.kskowronski.data.service.inap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.vaadin.artur.helpers.CrudService;
+import pl.kskowronski.data.entity.egeria.ckk.Address;
+import pl.kskowronski.data.entity.egeria.ckk.Client;
 import pl.kskowronski.data.entity.inap.Tender;
+import pl.kskowronski.data.entity.inap.TenderDTO;
+import pl.kskowronski.data.service.egeria.ckk.AddressRepo;
+import pl.kskowronski.data.service.egeria.ckk.ClientRepo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+@Service
 public class TenderService extends CrudService<Tender, BigDecimal> {
 
     private TenderRepo repo;
@@ -18,4 +28,44 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
     protected TenderRepo getRepository() {
         return repo;
     }
+
+    @Autowired
+    ClientRepo clientRepo;
+
+    @Autowired
+    AddressRepo addressRepo;
+
+    public Optional<List<TenderDTO>> getAllTendersBeforePlacing(String numberOfDays){
+        Optional<List<TenderDTO>> tendersDTO = Optional.of(new ArrayList<>());
+        Optional<List<Tender>> tenders = repo.getAllTendersBeforePlacing(numberOfDays);
+        if (tenders.isPresent()){
+            tenders.get().stream().forEach( item -> tendersDTO.get().add( mapperTender(item)));
+        }
+        return tendersDTO;
+    }
+
+
+    private TenderDTO mapperTender( Tender t){
+        TenderDTO tDTO = new TenderDTO();
+        tDTO.setId(t.getId());
+        tDTO.setAktywnosc(t.getAktywnosc());
+        tDTO.setDataOgloszenia(t.getDataOgloszenia());
+        tDTO.setDlugoscUmowy(t.getDlugoscUmowy());
+        tDTO.setFormaPostepowania(t.getFormaPostepowania());
+        tDTO.setResponsiblePersonFormal(t.getResponsiblePersonFormal());
+
+        Optional<Client> client = clientRepo.getClientByKlKod(t.getZamawiajacyId());
+        Optional<Address> address = addressRepo.getMainAddressForClient(t.getZamawiajacyId());
+
+        if (client.isPresent()){
+            tDTO.setPurchaser( client.get().getKldNazwa());
+        }
+
+        if (address.isPresent()){
+            tDTO.setCity(address.get().getMiejscowosc());
+        }
+
+        return tDTO;
+    }
+
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 public class TenderDTO {
 
     private BigDecimal id;
+    private String purchaser;
     private Date dataOgloszenia;
     private Date dataZlozenia;
     private String status;
@@ -23,5 +24,141 @@ public class TenderDTO {
     private String progowy;
     private String responsiblePersonFormal;
     private String city;
+    private Date deadlineApplication;
 
+    public BigDecimal getId() {
+        return id;
+    }
+
+    public void setId(BigDecimal id) {
+        this.id = id;
+    }
+
+    public String getPurchaser() {
+        return purchaser;
+    }
+
+    public void setPurchaser(String purchaser) {
+        this.purchaser = purchaser;
+    }
+
+    public Date getDataOgloszenia() {
+        return dataOgloszenia;
+    }
+
+    public void setDataOgloszenia(Date dataOgloszenia) {
+        this.dataOgloszenia = dataOgloszenia;
+    }
+
+    public Date getDataZlozenia() {
+        return dataZlozenia;
+    }
+
+    public void setDataZlozenia(Date dataZlozenia) {
+        this.dataZlozenia = dataZlozenia;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getAktywnosc() {
+        return aktywnosc;
+    }
+
+    public void setAktywnosc(String aktywnosc) {
+        this.aktywnosc = aktywnosc;
+    }
+
+    public String getPrzedmiotZamowienia() {
+        return przedmiotZamowienia;
+    }
+
+    public void setPrzedmiotZamowienia(String przedmiotZamowienia) {
+        this.przedmiotZamowienia = przedmiotZamowienia;
+    }
+
+    public String getTypPrzetargu() {
+        return typPrzetargu;
+    }
+
+    public void setTypPrzetargu(String typPrzetargu) {
+        this.typPrzetargu = typPrzetargu;
+    }
+
+    public String getFormaPostepowania() {
+        return formaPostepowania;
+    }
+
+    public void setFormaPostepowania(String formaPostepowania) {
+        this.formaPostepowania = formaPostepowania;
+    }
+
+    public Long getOkresMc() {
+        return okresMc;
+    }
+
+    public void setOkresMc(Long okresMc) {
+        this.okresMc = okresMc;
+    }
+
+    public Long getDlugoscUmowy() {
+        return dlugoscUmowy;
+    }
+
+    public void setDlugoscUmowy(Long dlugoscUmowy) {
+        this.dlugoscUmowy = dlugoscUmowy;
+    }
+
+    public Long getTerminPlatnosciDni() {
+        return terminPlatnosciDni;
+    }
+
+    public void setTerminPlatnosciDni(Long terminPlatnosciDni) {
+        this.terminPlatnosciDni = terminPlatnosciDni;
+    }
+
+    public String getWynikOceny() {
+        return wynikOceny;
+    }
+
+    public void setWynikOceny(String wynikOceny) {
+        this.wynikOceny = wynikOceny;
+    }
+
+    public String getProgowy() {
+        return progowy;
+    }
+
+    public void setProgowy(String progowy) {
+        this.progowy = progowy;
+    }
+
+    public String getResponsiblePersonFormal() {
+        return responsiblePersonFormal;
+    }
+
+    public void setResponsiblePersonFormal(String responsiblePersonFormal) {
+        this.responsiblePersonFormal = responsiblePersonFormal;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getDeadlineApplication() {
+        return deadlineApplication;
+    }
+
+    public void setDeadlineApplication(Date deadlineApplication) {
+        this.deadlineApplication = deadlineApplication;
+    }
 }
