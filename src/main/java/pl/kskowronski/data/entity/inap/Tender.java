@@ -70,6 +70,15 @@ public class Tender {
     @Column(name="FARCHIWALNY",nullable=false)
     private String fArchiwalny = "N";
 
+    @Column(name="numer_pakietu")
+    private String numerPakietu;
+
+    @Column(name="priorytet")
+    private BigDecimal priorytet;
+
+    @Column(name="participate")
+    private String participate;
+
     public BigDecimal getId() {
         return id;
     }
@@ -196,5 +205,29 @@ public class Tender {
 
     public void setfArchiwalny(String fArchiwalny) {
         this.fArchiwalny = fArchiwalny;
+    }
+
+    public String getNumerPakietu() {
+        return numerPakietu;
+    }
+
+    public void setNumerPakietu(String numerPakietu) {
+        this.numerPakietu = numerPakietu;
+    }
+
+    public BigDecimal getPriorytet() {
+        return priorytet;
+    }
+
+    public void setPriorytet(BigDecimal priorytet) {
+        this.priorytet = priorytet;
+    }
+
+    public String getParticipate() {
+        return participate;
+    }
+
+    public void setParticipate(String participate) {
+        this.participate = participate;
     }
 }

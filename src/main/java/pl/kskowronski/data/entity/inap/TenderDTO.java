@@ -17,7 +17,7 @@ public class TenderDTO {
     private String status;
     private String aktywnosc;
     private String przedmiotZamowienia;
-    private String typPrzetargu;
+    private String tenderType;
     private String formaPostepowania;
     private Long okresMc;
     private Long dlugoscUmowy;
@@ -27,6 +27,9 @@ public class TenderDTO {
     private String responsiblePersonFormal;
     private String city;
     private String deadlineApplication;
+    private String packageNumber;
+    private BigDecimal priority;
+    private String participate;
 
     public BigDecimal getId() {
         return id;
@@ -84,12 +87,12 @@ public class TenderDTO {
         this.przedmiotZamowienia = przedmiotZamowienia;
     }
 
-    public String getTypPrzetargu() {
-        return typPrzetargu;
+    public String getTenderType() {
+        return tenderType;
     }
 
-    public void setTypPrzetargu(String typPrzetargu) {
-        this.typPrzetargu = typPrzetargu;
+    public void setTenderType(String tenderType) {
+        this.tenderType = tenderType;
     }
 
     public String getFormaPostepowania() {
@@ -162,5 +165,29 @@ public class TenderDTO {
 
     public void setDeadlineApplication(String deadlineApplication) {
         this.deadlineApplication = deadlineApplication;
+    }
+
+    public String getPackageNumber() {
+        return packageNumber;
+    }
+
+    public void setPackageNumber(String packageNumber) {
+        this.packageNumber = packageNumber;
+    }
+
+    public BigDecimal getPriority() {
+        return priority;
+    }
+
+    public void setPriority(BigDecimal priority) {
+        this.priority = priority;
+    }
+
+    public String getParticipate() {
+        return participate;
+    }
+
+    public void setParticipate(String participate) {
+        this.participate = participate;
     }
 }

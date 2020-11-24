@@ -13,9 +13,7 @@ import pl.kskowronski.data.service.egeria.ckk.AddressRepo;
 import pl.kskowronski.data.service.egeria.ckk.ClientRepo;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class TenderService extends CrudService<Tender, BigDecimal> {
@@ -60,6 +58,10 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
         tDTO.setDlugoscUmowy(t.getDlugoscUmowy());
         tDTO.setFormaPostepowania(t.getFormaPostepowania());
         tDTO.setResponsiblePersonFormal(t.getResponsiblePersonFormal());
+        tDTO.setPackageNumber(t.getNumerPakietu());
+        tDTO.setPriority(t.getPriorytet());
+        tDTO.setParticipate(t.getParticipate());
+        tDTO.setTenderType(t.getTypPrzetargu());
 
         Optional<Client> client = clientRepo.getClientByKlKod(t.getZamawiajacyId());
         Optional<Address> address = addressRepo.getMainAddressForClient(t.getZamawiajacyId());
