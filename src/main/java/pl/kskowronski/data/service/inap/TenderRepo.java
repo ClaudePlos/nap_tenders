@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface TenderRepo extends JpaRepository<Tender, BigDecimal> {
 
     @Query("select t from Tender t where t.status != 'ZAKONCZONY' and t.fArchiwalny = 'N' " +
-            "and id in (select td.przId from TenderDate td where td.kod = 'ZLOZENIE_OFERT' and td.data > sysdate - :numberOfDays)")
+            "and t.id in (select td.przId from TenderDate td where td.kod = 'ZLOZENIE_OFERT' and td.data > sysdate - :numberOfDays)")
     Optional<List<Tender>> getAllTendersBeforePlacing( @Param("numberOfDays") String numberOfDays );
 
 }

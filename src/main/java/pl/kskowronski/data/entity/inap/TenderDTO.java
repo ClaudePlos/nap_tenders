@@ -27,6 +27,7 @@ public class TenderDTO {
     private String responsiblePersonFormal;
     private String city;
     private String deadlineApplication;
+    private Date deadlineSort;
     private String packageNumber;
     private BigDecimal priority;
     private String participate;
@@ -189,5 +190,13 @@ public class TenderDTO {
 
     public void setParticipate(String participate) {
         this.participate = participate;
+    }
+
+    public Date getDeadlineSort() {
+        return deadlineSort;
+    }
+
+    public void setDeadlineSort(Date deadlineSort) {
+        this.deadlineSort = deadlineSort;
     }
 }

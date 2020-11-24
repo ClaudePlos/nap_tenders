@@ -14,6 +14,7 @@ import pl.kskowronski.data.service.egeria.ckk.ClientRepo;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TenderService extends CrudService<Tender, BigDecimal> {
@@ -77,6 +78,7 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
 
         if (tenderDeadline.isPresent()){
             tDTO.setDeadlineApplication(mapperDate.dtYYYYMMDDHHMM.format(tenderDeadline.get().getData()));
+            tDTO.setDeadlineSort(tenderDeadline.get().getData());
         }
 
         return tDTO;
