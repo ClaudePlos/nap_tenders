@@ -1,5 +1,7 @@
 package pl.kskowronski.data.entity.inap;
 
+import pl.kskowronski.data.MapperDate;
+
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +26,7 @@ public class TenderDTO {
     private String progowy;
     private String responsiblePersonFormal;
     private String city;
-    private Date deadlineApplication;
+    private String deadlineApplication;
 
     public BigDecimal getId() {
         return id;
@@ -154,11 +156,11 @@ public class TenderDTO {
         this.city = city;
     }
 
-    public Date getDeadlineApplication() {
+    public String getDeadlineApplication() {
         return deadlineApplication;
     }
 
-    public void setDeadlineApplication(Date deadlineApplication) {
+    public void setDeadlineApplication(String deadlineApplication) {
         this.deadlineApplication = deadlineApplication;
     }
 }

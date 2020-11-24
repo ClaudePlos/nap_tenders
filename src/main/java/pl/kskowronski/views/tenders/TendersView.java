@@ -26,11 +26,13 @@ public class TendersView extends HorizontalLayout {
     private TenderService tenderService;
 
     public TendersView(@Autowired TenderService tenderService) {
+        setHeight("85%");
         setId("tenders-view");
         this.tenderService = tenderService;
 
         this.gridTenders = new Grid<>(TenderDTO.class);
-        gridTenders.setColumns("purchaser", "city", "dataZlozenia", "responsiblePersonFormal");
+        gridTenders.setColumns("purchaser", "city", "deadlineApplication", "responsiblePersonFormal");
+        gridTenders.setHeightFull();
 
         Optional<List<TenderDTO>> tenders = tenderService.getAllTendersBeforePlacing("5");
         if (tenders.get().size() > 0 ) {

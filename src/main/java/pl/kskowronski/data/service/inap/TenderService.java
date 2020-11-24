@@ -3,10 +3,12 @@ package pl.kskowronski.data.service.inap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vaadin.artur.helpers.CrudService;
+import pl.kskowronski.data.MapperDate;
 import pl.kskowronski.data.entity.egeria.ckk.Address;
 import pl.kskowronski.data.entity.egeria.ckk.Client;
 import pl.kskowronski.data.entity.inap.Tender;
 import pl.kskowronski.data.entity.inap.TenderDTO;
+import pl.kskowronski.data.entity.inap.TenderDate;
 import pl.kskowronski.data.service.egeria.ckk.AddressRepo;
 import pl.kskowronski.data.service.egeria.ckk.ClientRepo;
 
@@ -35,6 +37,11 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
     @Autowired
     AddressRepo addressRepo;
 
+    @Autowired
+    TenderDateRepo tenderDateRepo;
+
+    private MapperDate mapperDate = new MapperDate();
+
     public Optional<List<TenderDTO>> getAllTendersBeforePlacing(String numberOfDays){
         Optional<List<TenderDTO>> tendersDTO = Optional.of(new ArrayList<>());
         Optional<List<Tender>> tenders = repo.getAllTendersBeforePlacing(numberOfDays);
@@ -56,6 +63,7 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
 
         Optional<Client> client = clientRepo.getClientByKlKod(t.getZamawiajacyId());
         Optional<Address> address = addressRepo.getMainAddressForClient(t.getZamawiajacyId());
+        Optional<TenderDate> tenderDeadline = tenderDateRepo.getTenderDeadline(t.getId());
 
         if (client.isPresent()){
             tDTO.setPurchaser( client.get().getKldNazwa());
@@ -63,6 +71,10 @@ public class TenderService extends CrudService<Tender, BigDecimal> {
 
         if (address.isPresent()){
             tDTO.setCity(address.get().getMiejscowosc());
+        }
+
+        if (tenderDeadline.isPresent()){
+            tDTO.setDeadlineApplication(mapperDate.dtYYYYMMDDHHMM.format(tenderDeadline.get().getData()));
         }
 
         return tDTO;
