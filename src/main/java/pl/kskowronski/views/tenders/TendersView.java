@@ -3,11 +3,11 @@ package pl.kskowronski.views.tenders;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.data.provider.SortDirection;
+import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 @Route(value = "hello", layout = MainView.class)
 @PageTitle("Tenders")
-@CssImport("./styles/views/przetargi/przetargi-view.css")
+@CssImport("./styles/views/tenders/tenders-view.css")
 @RouteAlias(value = "", layout = MainView.class)
 public class TendersView extends HorizontalLayout {
 
@@ -43,7 +43,14 @@ public class TendersView extends HorizontalLayout {
         gridTenders.setColumns();
 
         gridTenders.addComponentColumn(item -> createIconTenderType(gridTenders, item)).setHeader("Type").setWidth("40px");
-        gridTenders.addColumn("purchaser").setWidth("250px");
+        //gridTenders.addColumn("purchaser").setWidth("250px");
+
+        gridTenders.addColumn(TemplateRenderer.<TenderDTO> of(
+                "<div style='padding: 1px; white-space: pre-wrap;' title='[[item.purchaser]]'>[[item.purchaser]]</div>")
+                .withProperty("purchaser", TenderDTO::getPurchaser))
+                .setHeader("purchaser").setWidth("250px");
+
+
         gridTenders.addColumn("city");
         gridTenders.addColumn("deadlineApplication").setWidth("150px");
         gridTenders.addColumn("responsiblePersonFormal").setWidth("200px");
