@@ -1,8 +1,5 @@
 package pl.kskowronski.data.entity.inap;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -54,7 +51,7 @@ public class TenderOfferDTO {
     }
 
     public void setClient(String client) {
-        client = client;
+        this.client = client;
     }
 
     public BigDecimal getNet() {
