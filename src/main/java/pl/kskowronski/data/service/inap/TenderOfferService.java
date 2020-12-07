@@ -31,6 +31,9 @@ public class TenderOfferService extends CrudService<TenderOffer, BigDecimal> {
     @Autowired
     private ClientRepo clientRepo;
 
+    @Autowired
+    private EventParticipantRepo eventParticipantRepo;
+
 
     public Optional<List<TenderOfferDTO>> getTendersOffersForTender(BigDecimal przId){
         Optional<List<TenderOfferDTO>> offersDTO = Optional.of(new ArrayList<>());
@@ -45,11 +48,10 @@ public class TenderOfferService extends CrudService<TenderOffer, BigDecimal> {
         TenderOfferDTO offerDTO = new TenderOfferDTO();
         offerDTO.setId(offer.getId());
         offerDTO.setPrzId(offer.getPrzId());
-        offerDTO.setDesc(offer.getOpis());
         offerDTO.setGross(offer.getWartoscBrutto());
         offerDTO.setNet(offer.getWartoscNetto());
         offerDTO.setResult(offer.getStatusWyniku());
-        Optional<Client> client = clientRepo.getClientByKlKod(offer.getKlKod());
+        Optional<Client> client = clientRepo.getClientByKlKod( eventParticipantRepo.findByOfId(offer.getId()).get().getKlKod() );
         if (client.isPresent()) {
             offerDTO.setClient(client.get().getKldNazwa());
         }

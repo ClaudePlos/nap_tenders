@@ -1,13 +1,10 @@
 package pl.kskowronski.data.entity.inap;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class TenderOfferDTO {
 
     private BigDecimal id;
-    private String desc;
-    private Date dateOfSubmission;
     private BigDecimal przId;
     private String client;
     private BigDecimal net ;
@@ -20,22 +17,6 @@ public class TenderOfferDTO {
 
     public void setId(BigDecimal id) {
         this.id = id;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public Date getDateOfSubmission() {
-        return dateOfSubmission;
-    }
-
-    public void setDateOfSubmission(Date dateOfSubmission) {
-        this.dateOfSubmission = dateOfSubmission;
     }
 
     public BigDecimal getPrzId() {

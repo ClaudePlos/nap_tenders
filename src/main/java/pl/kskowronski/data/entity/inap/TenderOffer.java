@@ -13,13 +13,6 @@ public class TenderOffer {
     @Column(name = "id", nullable = false)
     private BigDecimal id;
 
-    @Column(name="opis")
-    private String opis;
-
-    @Column(name="data_zlozenia")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataZlozenia;
-
     @Column(name="prz_id")
     private BigDecimal przId;
 
@@ -41,22 +34,6 @@ public class TenderOffer {
 
     public void setId(BigDecimal id) {
         this.id = id;
-    }
-
-    public String getOpis() {
-        return opis;
-    }
-
-    public void setOpis(String opis) {
-        this.opis = opis;
-    }
-
-    public Date getDataZlozenia() {
-        return dataZlozenia;
-    }
-
-    public void setDataZlozenia(Date dataZlozenia) {
-        this.dataZlozenia = dataZlozenia;
     }
 
     public BigDecimal getPrzId() {

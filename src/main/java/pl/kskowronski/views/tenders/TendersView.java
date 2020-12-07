@@ -78,7 +78,7 @@ public class TendersView extends HorizontalLayout {
         }
 
 
-        gridTendersOffers.setColumns("desc", "dateOfSubmission", "client", "net", "gross", "result");
+        gridTendersOffers.setColumns("client", "net", "gross", "result");
 
         gridTenders.setItemDetailsRenderer(new ComponentRenderer<>(tender -> {
             VerticalLayout layout = new VerticalLayout();

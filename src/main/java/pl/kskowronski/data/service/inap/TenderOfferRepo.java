@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface TenderOfferRepo extends JpaRepository<TenderOffer, BigDecimal> {
 
-    @Query("select to from TenderOffer to where to.przId = :przId order by to.dataZlozenia")
+    @Query("select to from TenderOffer to where to.przId = :przId order by to.id")
     Optional<List<TenderOffer>> getTendersOffersForTender(@Param("przId") BigDecimal przId);
 
 }
