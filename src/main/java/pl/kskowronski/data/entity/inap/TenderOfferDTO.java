@@ -19,20 +19,20 @@ public class TenderOfferDTO {
         this.id = id;
     }
 
-    public BigDecimal getPrzId() {
-        return przId;
-    }
-
-    public void setPrzId(BigDecimal przId) {
-        this.przId = przId;
-    }
-
     public String getClient() {
         return client;
     }
 
     public void setClient(String client) {
         this.client = client;
+    }
+
+    public BigDecimal getPrzId() {
+        return przId;
+    }
+
+    public void setPrzId(BigDecimal przId) {
+        this.przId = przId;
     }
 
     public BigDecimal getNet() {
@@ -58,4 +58,6 @@ public class TenderOfferDTO {
     public void setResult(String result) {
         this.result = result;
     }
+
+
 }

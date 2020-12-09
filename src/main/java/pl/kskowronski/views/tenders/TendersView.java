@@ -53,7 +53,7 @@ public class TendersView extends HorizontalLayout {
         gridTenders.addColumn(TemplateRenderer.<TenderDTO> of(
                 "<div style='padding: 1px; white-space: pre-wrap;' title='[[item.purchaser]]'>[[item.purchaser]]</div>")
                 .withProperty("purchaser", TenderDTO::getPurchaser))
-                .setHeader("purchaser").setWidth("250px");
+                .setHeader("Purchaser").setWidth("250px");
 
 
         gridTenders.addColumn("city");
@@ -77,8 +77,15 @@ public class TendersView extends HorizontalLayout {
             Notification.show("Brak przetargów na 5 dni", 3000, Notification.Position.MIDDLE);
         }
 
+        gridTendersOffers.setColumns();
+        gridTendersOffers.addColumn(TemplateRenderer.<TenderOfferDTO> of(
+                "<div style='padding: 1px; white-space: pre-wrap;' title='[[item.client]]'>[[item.client]]</div>")
+                .withProperty("client", TenderOfferDTO::getClient))
+                .setHeader("client").setWidth("250px");
 
-        gridTendersOffers.setColumns("client", "net", "gross", "result");
+        gridTendersOffers.addColumn("net");
+        gridTendersOffers.addColumn("gross");
+        gridTendersOffers.addColumn("result");
 
         gridTenders.setItemDetailsRenderer(new ComponentRenderer<>(tender -> {
             VerticalLayout layout = new VerticalLayout();

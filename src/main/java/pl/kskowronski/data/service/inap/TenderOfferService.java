@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vaadin.artur.helpers.CrudService;
 import pl.kskowronski.data.entity.egeria.ckk.Client;
+import pl.kskowronski.data.entity.inap.EventParticipant;
 import pl.kskowronski.data.entity.inap.Tender;
 import pl.kskowronski.data.entity.inap.TenderOffer;
 import pl.kskowronski.data.entity.inap.TenderOfferDTO;
@@ -51,10 +52,20 @@ public class TenderOfferService extends CrudService<TenderOffer, BigDecimal> {
         offerDTO.setGross(offer.getWartoscBrutto());
         offerDTO.setNet(offer.getWartoscNetto());
         offerDTO.setResult(offer.getStatusWyniku());
-        Optional<Client> client = clientRepo.getClientByKlKod( eventParticipantRepo.findByOfId(offer.getId()).get().getKlKod() );
-        if (client.isPresent()) {
-            offerDTO.setClient(client.get().getKldNazwa());
+
+        Optional<List<EventParticipant>> eventParticipants = eventParticipantRepo.findByOfId(offer.getId());
+
+        if (eventParticipants.isPresent()){
+            eventParticipants.get().stream().forEach( item ->{
+                Optional<Client> client = clientRepo.getClientByKlKod( item.getKlKod() );
+                if (client.isPresent()){
+                    offerDTO.setClient( offerDTO.getClient()+ " " + client.get().getKldNazwa());
+                }
+            });
         }
+
+        offerDTO.setClient(offerDTO.getClient().replace("null", ""));
+
         return offerDTO;
     }
 

@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface EventParticipantRepo extends JpaRepository<EventParticipant, BigDecimal> {
 
-    Optional<EventParticipant> findByOfId(BigDecimal ofId);
+    Optional<List<EventParticipant>> findByOfId(BigDecimal ofId);
 
 }
